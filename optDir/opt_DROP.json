@@ -1,0 +1,65 @@
+{
+  "data": {
+    "root": "example_data",
+    "train_split": "train",
+    "dev_split": "dev",
+    "test_split": "test",
+    "data_range_path": "data_range.npy",
+    "building_csv_paths": [
+      "example_data/obstacle.csv"
+    ],
+    "history_length": 15,
+    "prediction_length": 30,
+    "sample_dt_s": 2.0,
+    "train_stride": 1,
+    "eval_stride": 1,
+    "batch_size": 512,
+    "eval_batch_size": 512,
+    "num_workers": 0
+  },
+  "model": {
+    "use_lop": false,
+    "use_dri": false,
+    "input_dim": 6,
+    "output_dim": 6,
+    "d_model": 192,
+    "n_head": 4,
+    "encoder_layers": 3,
+    "decoder_layers": 3,
+    "dropout": 0.1,
+    "wavelet": "haar",
+    "boundary_mode": "symmetric",
+    "wavelet_levels": 2,
+    "lop_dim": 64,
+    "dri_hidden_dim": 96,
+    "dri_dim": 64,
+    "u2u_radius_m": 500.0,
+    "u2o_radius_m": 200.0,
+    "max_u2u": 8,
+    "building_k": 6,
+    "fusion_total_residual_cap": 0.1
+  },
+  "optim": {
+    "lr": 0.00065,
+    "weight_decay": 0.0,
+    "epochs": 100,
+    "min_lr": 0.00001,
+    "max_grad_norm": 1.0,
+    "seed": 42,
+    "cpu": false
+  },
+  "loss": {
+    "lambda_detail": 0.00005,
+    "lambda_lop_benefit": 0.15,
+    "lambda_lop_confidence": 0.05,
+    "lop_tolerance_m": 0.02,
+    "lop_confidence_temperature_m": 0.1,
+    "epsilon": 0.000001,
+    "dri_horizontal_safe_m": 25.0,
+    "dri_vertical_margin_m": 20.0,
+    "dri_vertical_xy_gate_m": 50.0
+  },
+  "output": {
+    "directory": "logs/DROP"
+  }
+}
